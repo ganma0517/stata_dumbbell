@@ -1,0 +1,4 @@
+v 3
+d Stata packages by Wen-Cheng Lin
+d https://github.com/ganma0517/stata_dumbbell
+p dumbbell  Dumbbell (connected-dot) plot comparing two time points by category

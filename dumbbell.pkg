@@ -1,0 +1,16 @@
+v 3
+d dumbbell: Dumbbell (connected-dot) plot comparing two time points by category
+d
+d Long-format input (category, two-valued time, value). Plots each category's
+d two time points as markers joined by a line, sorted by one period's value.
+d
+d Requires: Stata 16 or newer.
+d
+d Author: Wen-Cheng Lin, Academia Sinica
+d Source: https://github.com/ganma0517/stata_dumbbell
+d
+d Distribution-Date: 20260601
+d
+f dumbbell.ado
+f dumbbell.sthlp
+f dumbbell_demo.dta
