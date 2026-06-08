@@ -1,42 +1,49 @@
-*! dumbbell v1.0  31May2026
+*! dumbbell v1.1  8Jun2026
 *! Dumbbell (connected-dot) plot: one row per category, two time points joined
 *! by a line, sorted by one period's value. Long-format input.
 *!
 *! Syntax:
 *!   dumbbell yvar , over(catvar) time(timevar) [ options ]
 *!
-*! Required:
+*! ---- required ----
 *!   over(varname)      category variable (one row per category-time)
 *!   time(varname)      two-valued time/period variable (numeric or string)
 *!
-*! Options:
-*!   sortby(string)     "high" (default) or "low": which period's value to sort by;
-*!                      high = the larger time value (e.g. 2023), low = smaller.
-*!   descending         sort largest at top (default); use "ascending" to flip
+*! ---- sort order ----
+*!   sortby(string)     "high" (default) or "low": which period's value to sort by
+*!                      (high = the larger time value, e.g. 2023; low = smaller)
+*!   descending         sort largest at top (default); ascending flips it
 *!   ascending
-*!   c1(string)         color of the EARLIER time point (default "149 207 245")
-*!   c2(string)         color of the LATER time point   (default "26 43 76")
-*!   lcolor(string)     connecting line color (default gs11)
+*!
+*! ---- colours, markers, line ----
+*!   c1(string)         colour of the EARLIER time point (default "149 207 245")
+*!   c2(string)         colour of the LATER time point   (default "26 43 76")
+*!   lcolor(string)     connecting-line colour (default gs11)
 *!   msize(string)      marker size (default medlarge)
-*!   title(string)      graph title
+*!
+*! ---- axes, titles, legend ----
 *!   xtitle(string)     x-axis title (default = yvar label)
-*!   subtitle(string)   subtitle
 *!   xlabel(string)     full x-axis label spec (e.g. "0(5)30, grid")
 *!   labsize(string)    category (y) label text size (default small)
+*!   title(string)      graph title
+*!   subtitle(string)   subtitle
 *!   legend(string)     "on" (default) or "off"
 *!   l1(string)         legend label for earlier time (default = its value)
 *!   l2(string)         legend label for later time   (default = its value)
+*!
+*! ---- output ----
 *!   saving(string)     export path (e.g. "fig.png")
 *!   name(string)       graph window name (default dumbbell)
 
 program define dumbbell
     version 16.0
-    syntax varname(numeric) , Over(varname) Time(varname) ///
-        [ SORTby(string) DEScending ASCending ///
-          C1(string) C2(string) Lcolor(string) MSize(string) ///
-          title(string asis) XTITle(string asis) SUBtitle(string asis) ///
-          XLABel(string asis) LABSize(string) ///
-          Legend(string) L1(string asis) L2(string asis) ///
+    syntax varname(numeric) , Over(varname) Time(varname)                ///
+        [                                                                ///
+          SORTby(string) DEScending ASCending                           /// sort
+          C1(string) C2(string) Lcolor(string) MSize(string)            /// colours/markers
+          XTITle(string asis) XLABel(string asis) LABSize(string)       /// axes
+          title(string asis) SUBtitle(string asis)                      /// titles
+          Legend(string) L1(string asis) L2(string asis)               /// legend
           saving(string) name(string) ]
 
     marksample touse
